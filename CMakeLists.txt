@@ -8,11 +8,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
-set(SRC_LIST
-    Channel.cc 
-    InteAddress.cc 
-    logger.cc 
-    Timestamp.cc 
-)
+aux_source_directory(. SRC_LIST)
 
 add_library(mymuduo SHARED ${SRC_LIST})

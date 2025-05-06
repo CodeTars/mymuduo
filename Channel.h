@@ -14,10 +14,10 @@ public:
     using ReadEventCallback = std::function<void(Timestamp)>;
 
     Channel(EventLoop* loop, int fd);
-    ~Channel();
+    ~Channel() = default;
 
     // 处理事件
-    void handleEvent();
+    void handleEvent(Timestamp receiveTime);
 
     // 设置回调函数
     void setReadCallback(ReadEventCallback cb) { readCallback_ = std::move(cb); }
@@ -84,8 +84,8 @@ private:
     std::weak_ptr<void> tie_;  // 用于防止回调函数访问已释放的对象
     bool tied_;                // 是否绑定了对象
 
-    EventCallback readCallback_;   // 读事件回调
-    EventCallback writeCallback_;  // 写事件回调
-    EventCallback closeCallback_;  // 关闭事件回调
-    EventCallback errorCallback_;  // 错误事件回调
+    ReadEventCallback readCallback_;  // 读事件回调
+    EventCallback writeCallback_;     // 写事件回调
+    EventCallback closeCallback_;     // 关闭事件回调
+    EventCallback errorCallback_;     // 错误事件回调
 };

@@ -24,7 +24,7 @@ private:
         Logger& logger = Logger::getInstance();  \
         logger.setLogLevel(INFO);                \
         char buf[1024] = {0};                    \
-        snprintf(buf, 1024, fmt, ##__VA_VARS__); \
+        snprintf(buf, 1024, fmt, ##__VA_ARGS__); \
         logger.log(buf);                         \
     } while (0);
 
@@ -33,7 +33,7 @@ private:
         Logger& logger = Logger::getInstance();  \
         logger.setLogLevel(ERROR);               \
         char buf[1024] = {0};                    \
-        snprintf(buf, 1024, fmt, ##__VA_VARS__); \
+        snprintf(buf, 1024, fmt, ##__VA_ARGS__); \
         logger.log(buf);                         \
     } while (0);
 
@@ -42,7 +42,7 @@ private:
         Logger& logger = Logger::getInstance();  \
         logger.setLogLevel(FATAL);               \
         char buf[1024] = {0};                    \
-        snprintf(buf, 1024, fmt, ##__VA_VARS__); \
+        snprintf(buf, 1024, fmt, ##__VA_ARGS__); \
         logger.log(buf);                         \
         exit(EXIT_FAILURE);                      \
     } while (0);
@@ -53,7 +53,7 @@ private:
         Logger& logger = Logger::getInstance();  \
         logger.setLogLevel(DEBUG);               \
         char buf[1024] = {0};                    \
-        snprintf(buf, 1024, fmt, ##__VA_VARS__); \
+        snprintf(buf, 1024, fmt, ##__VA_ARGS__); \
         logger.log(buf);                         \
     } while (0);
 #else
