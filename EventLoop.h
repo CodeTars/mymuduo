@@ -23,16 +23,18 @@ public:
     // 退出事件循环
     void quit();
 
+    Timestamp pollReturnTime() const { return pollReturnTime_; }
+
     // 执行cb
-    void runInLoop();
-    void queueInLoop();
+    void runInLoop(Functor cb);
+    void queueInLoop(Functor cb);
 
     // 主要是mainLoop唤醒阻塞的其它subLoop
     void wakeup();
 
     void updateChannel(Channel* channel);
     void removeChannel(Channel* channel);
-    void hasChannel(Channel* channel);
+    bool hasChannel(Channel* channel);
 
     // 判断EventLoop对象是否在当前线程
     bool isInLoopThread() const { return threadId_ == CurrentThread::tid(); }
