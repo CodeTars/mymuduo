@@ -17,7 +17,7 @@ TcpServer::TcpServer(EventLoop* loop,
                      const std::string& nameArg,
                      Option option)
     : loop_(CheckLoopNotNull(loop)),
-      ipPort_(listenAddr.toIpPort()),
+      ipPort_(listenAddr.ip_port()),
       name_(nameArg),
       acceptor_(new Acceptor(loop, listenAddr, option == kReusePort)),
       threadPool_(new EventLoopThreadPool(loop, name_)),
